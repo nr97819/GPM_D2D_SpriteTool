@@ -9,17 +9,27 @@
 
 
 SWCBitmap::SWCBitmap()
-	: m_pBitmap(nullptr)
+	: m_pD2DMainBitmap(nullptr)
+	, m_pD2DToolBitmap(nullptr)
 {}
 
 SWCBitmap::~SWCBitmap()
 {}
 
-HRESULT SWCBitmap::Create(const wstring& _wsFileName)
+HRESULT SWCBitmap::CreateMain(const wstring& _wsFileName)
 {
 	HRESULT hr = S_OK;
 
-	m_pBitmap = *(SWCD2DCore::GetInst()->CreateMyD2D1Bitmap(_wsFileName));
+	m_pD2DMainBitmap = *(SWCD2DCore::GetInst()->CreateMainD2D1Bitmap(_wsFileName));
+
+	return S_OK;
+}
+
+HRESULT SWCBitmap::CreateTool(const wstring& _wsFileName)
+{
+	HRESULT hr = S_OK;
+
+	m_pD2DToolBitmap = *(SWCD2DCore::GetInst()->CreateToolD2D1Bitmap(_wsFileName));
 
 	return S_OK;
 }
@@ -27,7 +37,10 @@ HRESULT SWCBitmap::Create(const wstring& _wsFileName)
 void SWCBitmap::Release()
 {
 	// 해제 불가능한 이유를 모르겠다.
-	//if (m_pBitmap) { m_pBitmap->Release(); m_pBitmap = nullptr; }
+	
+	//if (m_pD2DMainBitmap) { m_pD2DMainBitmap->Release(); m_pD2DMainBitmap = nullptr; }
+	//if (m_pD2DToolBitmap) { m_pD2DToolBitmap->Release(); m_pD2DToolBitmap = nullptr; }
+
 	if (nullptr != this)
 		delete this;
 }

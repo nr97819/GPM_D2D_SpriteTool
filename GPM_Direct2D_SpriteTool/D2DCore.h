@@ -17,12 +17,15 @@ private:
 	ID2D1Factory*				m_pD2D1Factory;
 	IDWriteFactory*				m_pDWriteFactory;
 	IWICImagingFactory*			m_pWICFactory;
-
 	IDWriteTextFormat*			m_pDWriteTextFormat;
-	ID2D1HwndRenderTarget*		m_pRenderTarget;
-
-	ID2D1Bitmap*				m_pBitmap;
-	HWND						m_hWnd;
+	// ============ :: Main Window :: ============
+	HWND						m_hMainWnd;
+	ID2D1HwndRenderTarget*		m_pMainRT;
+	ID2D1Bitmap*				m_pD2DMainBitmap;
+	// ============ :: Tool Window :: ============
+	HWND						m_hToolWnd;
+	ID2D1HwndRenderTarget*		m_pToolRT;
+	ID2D1Bitmap*				m_pD2DToolBitmap;
 
 public:
 	static SWCD2DCore* GetInst()
@@ -37,19 +40,25 @@ private:
 	~SWCD2DCore();
 
 public:
-	HRESULT Init(HWND m_hWnd);
+	HRESULT InitMain(HWND m_hMainWnd);
+	HRESULT InitTool(HWND m_hToolWnd);
+
 	void Release();
 
 public:
 	ID2D1Factory** CreateMyD2D1Factory() { return &m_pD2D1Factory; }
 	IDWriteFactory** CreateMyDWriteFactory() { return &m_pDWriteFactory; }
 	IWICImagingFactory** CreateMyWICImagingFactory() { return &m_pWICFactory; }
-	ID2D1HwndRenderTarget** CreateMyRenderTarget() { return &m_pRenderTarget; }
-
 	IDWriteTextFormat** CreateMyTextFormat(const WCHAR* _fontName, FLOAT _fontSize);
-	ID2D1Bitmap** CreateMyD2D1Bitmap(const wstring& wsFileName);
+
+	// ============ :: Main Window :: ============
+	ID2D1HwndRenderTarget** CreateMainRenderTarget() { return &m_pMainRT; }
+	ID2D1Bitmap** CreateMainD2D1Bitmap(const wstring& _wsFileName);
+	// ============ :: Tool Window :: ============
+	ID2D1HwndRenderTarget** CreateToolRenderTarget() { return &m_pToolRT; }
+	ID2D1Bitmap** CreateToolD2D1Bitmap(const wstring& _wsFileName);
 
 public:
-	ID2D1HwndRenderTarget* GetRT() { return m_pRenderTarget; }
-	HWND GetMainHwnd() { return m_hWnd; }
+	ID2D1HwndRenderTarget* GetRT() { return m_pMainRT; }
+	HWND GetMainHwnd() { return m_hMainWnd; }
 };

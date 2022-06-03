@@ -12,17 +12,20 @@ using std::wstring;
 class SWCBitmap
 {
 private:
-	ID2D1Bitmap*			m_pBitmap;
+	ID2D1Bitmap*			m_pD2DMainBitmap;
+	ID2D1Bitmap*			m_pD2DToolBitmap;
 
 public:
 	SWCBitmap();
 	~SWCBitmap();
 
 public:
-	HRESULT Create(const wstring& _wsFileName);
+	HRESULT CreateMain(const wstring& _wsFileName);
+	HRESULT CreateTool(const wstring& _wsFileName);
 	void Release();
 
 public:
-	ID2D1Bitmap** GetBitmap() { return &m_pBitmap; }
+	ID2D1Bitmap** GetMainBitmap() { return &m_pD2DMainBitmap; }
+	ID2D1Bitmap** GetToolBitmap() { return &m_pD2DToolBitmap; }
 };
 

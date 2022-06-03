@@ -11,7 +11,7 @@
 #include <string>
 using std::wstring;
 
-class CD2DCore
+class SWCD2DCore
 {
 private:
 	ID2D1Factory*				m_pD2D1Factory;
@@ -25,16 +25,16 @@ private:
 	HWND						m_hWnd;
 
 public:
-	static CD2DCore* GetInst()
+	static SWCD2DCore* GetInst()
 	{
-		static CD2DCore* m_inst = new CD2DCore;
+		static SWCD2DCore* m_inst = new SWCD2DCore;
 
 		return m_inst;
 	}
 
 private:
-	CD2DCore();
-	~CD2DCore();
+	SWCD2DCore();
+	~SWCD2DCore();
 
 public:
 	HRESULT Init(HWND m_hWnd);

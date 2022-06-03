@@ -8,7 +8,7 @@
 
 #include "Bitmap.h"
 
-class CToolApp
+class SWCToolApp
 {
 public:
 	HWND						m_hWnd;
@@ -20,14 +20,14 @@ public:
 	IDWriteFactory*				m_pDWriteFactory;
 	IDWriteTextFormat*			m_pDWriteTextFormat;
 
-	CBitmap*					m_pMyBitmap;
+	SWCBitmap*					m_pMyBitmap;
 	ID2D1Bitmap*				m_pBitmap;
 	ID2D1HwndRenderTarget*		m_pRenderTarget;
 	ID2D1SolidColorBrush*		m_pBlackBrush;
 
 public:
-	CToolApp();
-	~CToolApp();
+	SWCToolApp();
+	~SWCToolApp();
 
 public:
 	HRESULT Init(HINSTANCE hInstance, int nCmdShow);

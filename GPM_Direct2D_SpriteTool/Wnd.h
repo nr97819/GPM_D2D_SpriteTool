@@ -2,7 +2,7 @@
 
 #include <windows.h>
 
-class CWnd
+class SWCWnd
 {
 protected:
 	HWND			m_hWnd;
@@ -13,8 +13,8 @@ public:
 
 protected:
 public:
-	CWnd();
-	~CWnd();
+	SWCWnd();
+	~SWCWnd();
 
 public:
 	HRESULT Create(HINSTANCE _hInstance, int _nCmdShow, WCHAR* _wTitle, WCHAR* _wClassName, UINT _iWidth, UINT _iHeight);

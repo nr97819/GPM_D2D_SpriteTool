@@ -14,7 +14,7 @@
 #include <string>
 using std::wstring;
 
-CD2DCore::CD2DCore()
+SWCD2DCore::SWCD2DCore()
 	: m_pD2D1Factory(nullptr)
 	, m_pDWriteFactory(nullptr)
 	, m_pWICFactory(nullptr)
@@ -24,10 +24,10 @@ CD2DCore::CD2DCore()
 	, m_hWnd(0)
 {}
 
-CD2DCore::~CD2DCore()
+SWCD2DCore::~SWCD2DCore()
 {}
 
-HRESULT CD2DCore::Init(HWND _hWnd)
+HRESULT SWCD2DCore::Init(HWND _hWnd)
 {
 	HRESULT hr = S_OK;
 
@@ -57,7 +57,7 @@ HRESULT CD2DCore::Init(HWND _hWnd)
 	return S_OK;
 }
 
-void CD2DCore::Release()
+void SWCD2DCore::Release()
 {
 	if (m_pD2D1Factory) { m_pD2D1Factory->Release(); m_pD2D1Factory = nullptr; }
 	if (m_pDWriteFactory) { m_pDWriteFactory->Release(); m_pDWriteFactory = nullptr; }
@@ -67,7 +67,7 @@ void CD2DCore::Release()
 	if (m_pRenderTarget) { m_pRenderTarget->Release(); m_pRenderTarget = nullptr; }
 }
 
-IDWriteTextFormat** CD2DCore::CreateMyTextFormat(const WCHAR* _fontName, FLOAT _fontSize)
+IDWriteTextFormat** SWCD2DCore::CreateMyTextFormat(const WCHAR* _fontName, FLOAT _fontSize)
 {
 	m_pDWriteFactory->CreateTextFormat(
 		_fontName, NULL,
@@ -79,7 +79,7 @@ IDWriteTextFormat** CD2DCore::CreateMyTextFormat(const WCHAR* _fontName, FLOAT _
 	return &m_pDWriteTextFormat;
 }
 
-ID2D1Bitmap** CD2DCore::CreateMyD2D1Bitmap(const wstring& _wsFileName)
+ID2D1Bitmap** SWCD2DCore::CreateMyD2D1Bitmap(const wstring& _wsFileName)
 {
 	HRESULT hr = S_OK;
 

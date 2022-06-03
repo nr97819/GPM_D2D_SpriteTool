@@ -2,18 +2,18 @@
 
 #include "D2DCore.h"
 
-CWnd::CWnd()
+SWCWnd::SWCWnd()
 	: m_hWnd(0)
 	, m_szWindowClass{}
 	, m_szTitle{}
 {
 }
 
-CWnd::~CWnd()
+SWCWnd::~SWCWnd()
 {
 }
 
-HRESULT CWnd::Create(HINSTANCE _hInstance, int _nCmdShow, WCHAR* _wTitle, WCHAR* _wClassName, UINT _iWidth, UINT _iHeight)
+HRESULT SWCWnd::Create(HINSTANCE _hInstance, int _nCmdShow, WCHAR* _wTitle, WCHAR* _wClassName, UINT _iWidth, UINT _iHeight)
 {
 	// ГЊСп
 	wcscpy_s(m_szWindowClass, ARRAYSIZE(L"DesktopApp"), L"DesktopApp");
@@ -66,7 +66,7 @@ HRESULT CWnd::Create(HINSTANCE _hInstance, int _nCmdShow, WCHAR* _wTitle, WCHAR*
 	}
 }
 
-LRESULT CALLBACK CWnd::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK SWCWnd::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	PAINTSTRUCT ps;
 	HDC hdc;
@@ -100,8 +100,8 @@ LRESULT CALLBACK CWnd::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
 		width = LOWORD(lParam);
 		height = HIWORD(lParam);
 
-		if (CD2DCore::GetInst()->GetRT())
-			CD2DCore::GetInst()->GetRT()->Resize({ (UINT32)width, (UINT32)height });
+		if (SWCD2DCore::GetInst()->GetRT())
+			SWCD2DCore::GetInst()->GetRT()->Resize({ (UINT32)width, (UINT32)height });
 		break;
 
 	case WM_DESTROY:

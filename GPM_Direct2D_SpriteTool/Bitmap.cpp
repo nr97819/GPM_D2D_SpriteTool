@@ -8,23 +8,23 @@
 #include "D2DCore.h"
 
 
-CBitmap::CBitmap()
+SWCBitmap::SWCBitmap()
 	: m_pBitmap(nullptr)
 {}
 
-CBitmap::~CBitmap()
+SWCBitmap::~SWCBitmap()
 {}
 
-HRESULT CBitmap::Create(const wstring& _wsFileName)
+HRESULT SWCBitmap::Create(const wstring& _wsFileName)
 {
 	HRESULT hr = S_OK;
 
-	m_pBitmap = *(CD2DCore::GetInst()->CreateMyD2D1Bitmap(_wsFileName));
+	m_pBitmap = *(SWCD2DCore::GetInst()->CreateMyD2D1Bitmap(_wsFileName));
 
 	return S_OK;
 }
 
-void CBitmap::Release()
+void SWCBitmap::Release()
 {
 	// 해제 불가능한 이유를 모르겠다.
 	//if (m_pBitmap) { m_pBitmap->Release(); m_pBitmap = nullptr; }

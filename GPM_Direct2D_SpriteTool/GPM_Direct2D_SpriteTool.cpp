@@ -1,12 +1,12 @@
 
 #include <windows.h>
 
-#include "CToolApp.h"
+#include "ToolApp.h"
 
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	int msg = {};
-	CToolApp toolApp;
+	SWCToolApp toolApp;
 
 	if (SUCCEEDED(toolApp.Init(hInstance, nCmdShow)))
 	{

@@ -9,14 +9,14 @@
 #include <string>
 using std::wstring;
 
-class CBitmap
+class SWCBitmap
 {
 private:
 	ID2D1Bitmap*			m_pBitmap;
 
 public:
-	CBitmap();
-	~CBitmap();
+	SWCBitmap();
+	~SWCBitmap();
 
 public:
 	HRESULT Create(const wstring& _wsFileName);

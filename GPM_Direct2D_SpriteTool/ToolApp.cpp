@@ -11,7 +11,7 @@ using std::wstring;
 #include "D2DCore.h"
 #include "TimeMgr.h"
 
-CToolApp::CToolApp()
+SWCToolApp::SWCToolApp()
 	/*: m_pD2D1Factory(nullptr)
 	, m_pDWriteFactory(nullptr)
 	, m_pRenderTarget(nullptr)
@@ -25,10 +25,10 @@ CToolApp::CToolApp()
 	, m_pMyBitmap(nullptr)*/
 {}
 
-CToolApp::~CToolApp()
+SWCToolApp::~SWCToolApp()
 {}
 
-HRESULT CToolApp::Init(HINSTANCE hInstance, int nCmdShow)
+HRESULT SWCToolApp::Init(HINSTANCE hInstance, int nCmdShow)
 {
 	HRESULT hr = S_OK;
 
@@ -36,13 +36,13 @@ HRESULT CToolApp::Init(HINSTANCE hInstance, int nCmdShow)
 	wcscpy_s(m_szTitle, ARRAYSIZE(L"Windows Desktop Guided Tour Application"), L"Windows Desktop Guided Tour Application");
 
 	// CBitmap에서 D2DBitmap만 받아오고, CBitmap은 바로 버리기?
-	m_pMyBitmap = new CBitmap();
+	m_pMyBitmap = new SWCBitmap();
 	const wstring& wsFileName = L"midnight.png";
 
 	hr = InitAPI(hInstance, nCmdShow);
 	if (FAILED(hr)) return E_FAIL;
 
-	hr = CD2DCore::GetInst()->Init(m_hWnd);
+	hr = SWCD2DCore::GetInst()->Init(m_hWnd);
 	if (FAILED(hr)) return E_FAIL;
 
 	hr = m_pMyBitmap->Create(wsFileName);
@@ -50,16 +50,16 @@ HRESULT CToolApp::Init(HINSTANCE hInstance, int nCmdShow)
 
 
 	// Singletom
-	CTimeMgr::GetInst()->Init();
+	SWCTimeMgr::GetInst()->Init();
 	/*CKeyMgr::GetInst()->Init();
 	CAnimMgr::GetInst()->Init();*/
 
 
 	// D2DCore에서 만들어준 거니까, 초기화는 D2DCore에서 하는게 맞는건지?
-	m_pD2D1Factory = *(CD2DCore::GetInst()->CreateMyD2D1Factory());
-	m_pDWriteFactory = *(CD2DCore::GetInst()->CreateMyDWriteFactory());
-	m_pRenderTarget = *(CD2DCore::GetInst()->CreateMyRenderTarget());
-	m_pDWriteTextFormat = *(CD2DCore::GetInst()->CreateMyTextFormat(L"Gabriola", 50));
+	m_pD2D1Factory = *(SWCD2DCore::GetInst()->CreateMyD2D1Factory());
+	m_pDWriteFactory = *(SWCD2DCore::GetInst()->CreateMyDWriteFactory());
+	m_pRenderTarget = *(SWCD2DCore::GetInst()->CreateMyRenderTarget());
+	m_pDWriteTextFormat = *(SWCD2DCore::GetInst()->CreateMyTextFormat(L"Gabriola", 50));
 
 	// Bitmap 초기화
 	m_pBitmap = *(m_pMyBitmap->GetBitmap());
@@ -89,26 +89,26 @@ HRESULT CToolApp::Init(HINSTANCE hInstance, int nCmdShow)
 	return S_OK;
 }
 
-void CToolApp::Release()
+void SWCToolApp::Release()
 {
 	if (m_pMyBitmap) { m_pMyBitmap->Release(); m_pMyBitmap = nullptr; }
 
 	if (m_pBlackBrush) { m_pBlackBrush->Release(); m_pBlackBrush = nullptr; }
 
-	CTimeMgr::GetInst()->Release();
+	SWCTimeMgr::GetInst()->Release();
 	/*CKeyMgr::GetInst()->Release();
 	CAnimMgr::GetInst()->Release();*/
 }
 
-void CToolApp::Update()
+void SWCToolApp::Update()
 {
 	// 업데이트 관련 코드 작성 (애니메이션)
-	CTimeMgr::GetInst()->Update();
+	SWCTimeMgr::GetInst()->Update();
 	/*CKeyMgr::GetInst()->Update();
 	CAnimMgr::GetInst()->Update();*/
 }
 
-void CToolApp::Render()
+void SWCToolApp::Render()
 {
 	m_pRenderTarget->BeginDraw();
 
@@ -131,7 +131,7 @@ void CToolApp::Render()
 	m_pRenderTarget->EndDraw();
 }
 
-HRESULT CToolApp::InitAPI(HINSTANCE hInstance, int nCmdShow)
+HRESULT SWCToolApp::InitAPI(HINSTANCE hInstance, int nCmdShow)
 {
 	WNDCLASSEX wcex;
 
@@ -187,7 +187,7 @@ HRESULT CToolApp::InitAPI(HINSTANCE hInstance, int nCmdShow)
 	return S_OK;
 }
 
-int CToolApp::RunLoop()
+int SWCToolApp::RunLoop()
 {
 	MSG msg = {};
 	while (WM_QUIT != msg.message)
@@ -207,7 +207,7 @@ int CToolApp::RunLoop()
 	return (int)msg.wParam;
 }
 
-LRESULT CALLBACK CToolApp::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK SWCToolApp::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	PAINTSTRUCT ps;
 	HDC hdc;

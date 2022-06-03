@@ -2,7 +2,7 @@
 
 #include <Windows.h>
 
-class CTimeMgr
+class SWCTimeMgr
 {
 private:
 	LARGE_INTEGER		m_llCurCount;
@@ -15,13 +15,13 @@ private:
 	UINT				m_iFPS;
 
 private:
-	CTimeMgr();
-	~CTimeMgr();
+	SWCTimeMgr();
+	~SWCTimeMgr();
 
 public:
-	static CTimeMgr* GetInst()
+	static SWCTimeMgr* GetInst()
 	{
-		static CTimeMgr m_inst;
+		static SWCTimeMgr m_inst;
 		return &m_inst;
 	}
 

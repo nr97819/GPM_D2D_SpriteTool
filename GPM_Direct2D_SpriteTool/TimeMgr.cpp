@@ -5,7 +5,7 @@
 
 #include "D2DCore.h"
 
-CTimeMgr::CTimeMgr()
+SWCTimeMgr::SWCTimeMgr()
 	: m_llCurCount{}
 	, m_llPrevCount{}
 	, m_llFrequency{}
@@ -15,16 +15,16 @@ CTimeMgr::CTimeMgr()
 	, m_iFPS(0)
 {}
 
-CTimeMgr::~CTimeMgr()
+SWCTimeMgr::~SWCTimeMgr()
 {}
 
-void CTimeMgr::Init()
+void SWCTimeMgr::Init()
 {
 	QueryPerformanceCounter(&m_llPrevCount);
 	QueryPerformanceFrequency(&m_llFrequency);
 }
 
-void CTimeMgr::Update()
+void SWCTimeMgr::Update()
 {
 	QueryPerformanceCounter(&m_llCurCount);
 
@@ -41,14 +41,14 @@ void CTimeMgr::Update()
 
 		WCHAR wsBuf[64] = {};
 		swprintf_s(wsBuf, L"FPS : %d", m_iFPS);
-		SetWindowText(CD2DCore::GetInst()->GetMainHwnd(), wsBuf);
+		SetWindowText(SWCD2DCore::GetInst()->GetMainHwnd(), wsBuf);
 
 		m_dAcc = 0;
 		m_iCallCount = 0;
 	}
 }
 
-void CTimeMgr::Release()
+void SWCTimeMgr::Release()
 {
 	// 해제할 내용이 아직 없음
 }

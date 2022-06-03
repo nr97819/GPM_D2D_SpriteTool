@@ -139,18 +139,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CBitmap.cpp" />
-    <ClCompile Include="CD2DCore.cpp" />
-    <ClCompile Include="CTimeMgr.cpp" />
-    <ClCompile Include="CToolApp.cpp" />
+    <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="D2DCore.cpp" />
+    <ClCompile Include="TimeMgr.cpp" />
+    <ClCompile Include="ToolApp.cpp" />
     <ClCompile Include="GPM_Direct2D_SpriteTool.cpp" />
     <ClCompile Include="Wnd.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CBitmap.h" />
-    <ClInclude Include="CD2DCore.h" />
-    <ClInclude Include="CTimeMgr.h" />
-    <ClInclude Include="CToolApp.h" />
+    <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="D2DCore.h" />
+    <ClInclude Include="TimeMgr.h" />
+    <ClInclude Include="ToolApp.h" />
     <ClInclude Include="struct.h" />
     <ClInclude Include="Wnd.h" />
   </ItemGroup>

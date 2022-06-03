@@ -16,10 +16,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CToolApp.cpp">
+    <ClCompile Include="ToolApp.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CTimeMgr.cpp">
+    <ClCompile Include="TimeMgr.cpp">
       <Filter>소스 파일\Manager</Filter>
     </ClCompile>
     <ClCompile Include="GPM_Direct2D_SpriteTool.cpp">
@@ -28,30 +28,30 @@
     <ClCompile Include="Wnd.cpp">
       <Filter>소스 파일\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="CD2DCore.cpp">
+    <ClCompile Include="D2DCore.cpp">
       <Filter>소스 파일\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="CBitmap.cpp">
+    <ClCompile Include="Bitmap.cpp">
       <Filter>소스 파일\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CToolApp.h">
+    <ClInclude Include="ToolApp.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
     <ClInclude Include="struct.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
-    <ClInclude Include="CTimeMgr.h">
+    <ClInclude Include="TimeMgr.h">
       <Filter>소스 파일\Manager</Filter>
     </ClInclude>
     <ClInclude Include="Wnd.h">
       <Filter>소스 파일\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="CD2DCore.h">
+    <ClInclude Include="D2DCore.h">
       <Filter>소스 파일\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="CBitmap.h">
+    <ClInclude Include="Bitmap.h">
       <Filter>소스 파일\Engine</Filter>
     </ClInclude>
   </ItemGroup>

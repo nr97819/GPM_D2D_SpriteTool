@@ -1,6 +1,6 @@
 #include "Wnd.h"
 
-#include "CD2DCore.h"
+#include "D2DCore.h"
 
 CWnd::CWnd()
 	: m_hWnd(0)
